@@ -1,0 +1,42 @@
+[project]
+name = "pyproj"
+authors = [{ name = "Author", email = "author@example.com" }]
+description = "A one-line description of this project."
+dynamic = ["version", "urls"]
+readme = "README.md"
+keywords = ["template", "hatch", "tox", "development"]
+dependencies = []
+license = "MIT"
+requires-python = ">=3.10"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.optional-dependencies]
+dev = ["hatch~=1.9.3"]
+test = ["tox~=4.13.0"]
+
+[project.scripts]
+pypkg = "pypkg.sample:main"
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.targets.sdist]
+exclude = [".venv", "venv"]
+
+[tool.hatch.build.targets.wheel]
+sources = ["src"]
+packages = ["src"]
+
+[tool.hatch.metadata.hooks.vcs.urls]
+Homepage = "https://github.com/seff/pyproj"
